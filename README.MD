@@ -6,18 +6,20 @@ This pipeline scrapes data streamflow from the USDA as well as trip reports from
     - Use psycopg2 to insert data into a postgresDB
     - Using Kafka Connect & the Debezium postgres connector the trip reports are put into a Kafka topic and then streamed into 
     Elastic Search using Confluent's ElasticSearch sink
-    - Currently using JSON serialization but next step is to use AVRO
+This project also a full stack web application includes a Django REST project located within the djangosnotel folder, as well as an Angular frontend  
+application in the angularsnotel folder.  
 
+### Run the pipeline
 
-##### Run the pipeline
+##### Run the kafka stack
+docker-compose up --build
+##### Run the scraper
+run pipeline/wta/create_tables.py (from an ipython window I'm stuggling to get to this to work from command line)   
+##### Install Debezium connector and submit connectors to Kafka Connect instance by using the script
+bash scripts/install_connectors.sh.  This will take about 30 seconds because it needs to restart the connect container 
 
-##### Run angular 
-
-Install the connector 
-docker exec connect confluent-hub install  debezium/debezium-connector-postgresql:0.9.4 --no-prompt
-docker restart connect
-bash scripts/pipeline/post.sh elasticsearch_sink_connector.json
-bash scripts/pipeline/post.sh debezium_source_connector.json    
+##### Verify that records have been inserted into ElasticSearch index
+bash scripts/elasticsearch/queryES.sh
 
 
 ![](pipeline.png)

@@ -1,0 +1,24 @@
+### Install the Debezium connector then restart the connect container
+docker exec -it connect bash
+confluent-hub install debezium/debezium-connector-postgresql:0.9.4
+docker-compose restart connect
+
+Use the utility script to add the connector
+- bash scripts/post.sh snowpack.json
+Verify that the connector has been sucessfuly added by consuming the topic, using the utility script included or use another consumer.
+If the connector has worked than there will be trip reports in the topic
+-bash scripts/consumer.sh db.snowpack.trip_reports
+
+### Add the ElasticSearch sink connector
+bash scripts/post.sh es.json
+### Verify that ES is getting populated
+bash scripts/queryES.sh db.snowpack.trip_reports
+
+
+
+Delete an index from ES
+curl localhost:29200/delete/db.snowpack.trip_reports/
+
+View the mapping for an index in ES
+curl  localhost:29200/db.snowpack.trip_reports/_mapping | jq
+Do I still have a mapping if I have ignore shema as True?

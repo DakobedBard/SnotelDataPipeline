@@ -17,7 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NbAuthService } from '@nebular/auth';
 import { CoreModule } from './@core/core.module';
 import { ProductListComponent } from './components/product-list/product-list.component'
-import { UploadComponent } from './components/upload/upload.component'
+
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -31,7 +31,7 @@ import {
 @NgModule({
   declarations: [AppComponent,
     ProductListComponent,
-    UploadComponent
+
 
   ],
   imports: [

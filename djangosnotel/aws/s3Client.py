@@ -15,10 +15,10 @@ class s3Client:
 
     def upload_file(self,file_name, object_name):
         """Upload a file to an S3 bucket
-        :param file_name: File to upload
-        :param bucket: Bucket to upload to
+        :param file_name: File to snowpack
+        :param bucket: Bucket to snowpack to
         :param object_name: S3 object name. If not specified then file_name is used
-        :return: returns the document object if uploaded to S3.  If the upload fails will return a -1.
+        :return: returns the document object if uploaded to S3.  If the snowpack fails will return a -1.
         """
         # If S3 object_name was not specified, use file_name
         if object_name is None:
@@ -46,8 +46,8 @@ class s3Client:
 
     def download(self, object_name ):
         """Upload a file to an S3 bucket
-        :param file_name: File to upload
-        :param bucket: Bucket to upload to
+        :param file_name: File to snowpack
+        :param bucket: Bucket to snowpack to
         :param object_name: S3 object name. If not specified then file_name is used
         :return: True if file was downloaded, else False
         """

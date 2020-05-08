@@ -1,5 +1,5 @@
 import boto3
-from upload.models import EC2Instance
+from snowpack.models import EC2Instance
 
 import time
 

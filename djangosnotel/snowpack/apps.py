@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class UploadappConfig(AppConfig):
-    name = 'upload'
+    name = 'snowpack'

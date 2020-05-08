@@ -1,5 +1,5 @@
 """
-WSGI config for djangomir project.
+WSGI config for djangosnotel project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangomir.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangosnotel.settings')
 
 application = get_wsgi_application()

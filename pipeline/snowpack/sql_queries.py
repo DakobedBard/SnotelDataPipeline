@@ -12,7 +12,7 @@ location_table_create = ("""CREATE TABLE IF NOT EXISTS locations (
 
 snowpack_table_create = ("""CREATE TABLE IF NOT EXISTS snowpack (
                             id SERIAL PRIMARY KEY,
-                            location_id INT NOT NULL,
+                            location_id INT REFERENCES locations(location_id),
                             date DATE NOT NULL,
                             snow_current INT NOT NULL,
                             snow_median INT NOT NULL,

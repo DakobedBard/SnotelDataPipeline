@@ -1,5 +1,31 @@
 version: '2'
 services:
+  web: &python
+    build: ./djangosnotel
+    command: python manage.py runserver 0.0.0.0:8000
+    container_name: djangoapp
+    volumes:
+      - ./djangosnotel/:/usr/src/app/
+      - ~/.aws/:/root/.aws:ro
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env.dev-sample
+    depends_on:
+      - postgres
+
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=database1_role
+      - POSTGRES_PASSWORD=database1_password
+      - POSTGRES_DB=database1
+    container_name: db
+
+
+
   postgres:
     image: debezium/example-postgres:${DEBEZIUM_VERSION}
     ports:
@@ -9,6 +35,8 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=snowpackDB
     container_name: postgres
+
+
   zookeeper:
     image: debezium/zookeeper:${DEBEZIUM_VERSION}
     ports:
@@ -124,3 +152,7 @@ services:
       xpack.security.enabled: "false"
       ES_JAVA_OPTS: "-Xms1g -Xmx1g"
       discovery.type: "single-node"
+
+
+volumes:
+  postgres_data:

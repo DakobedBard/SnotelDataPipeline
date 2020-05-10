@@ -1,0 +1,11 @@
+/data/mddarr/CorwinSoftware/AvroTweets/avro-schema/target/generated-sources/org/mddarr/payments/dto/PaymentRequest.java
+/data/mddarr/CorwinSoftware/AvroTweets/avro-schema/target/generated-sources/org/mddarr/products/Product.java
+/data/mddarr/CorwinSoftware/AvroTweets/avro-schema/target/generated-sources/org/mddarr/products/PurchaseEvent.java
+/data/mddarr/CorwinSoftware/AvroTweets/avro-schema/target/generated-sources/org/mddarr/orders/event/dto/ValidatedOrder.java
+/data/mddarr/CorwinSoftware/AvroTweets/avro-schema/target/generated-sources/org/mddarr/avro/tweet/Tweet.java
+/data/mddarr/CorwinSoftware/AvroTweets/avro-schema/target/generated-sources/org/mddarr/orders/records/dto/Customer.java
+/data/mddarr/CorwinSoftware/AvroTweets/avro-schema/target/generated-sources/org/mddarr/products/Event1.java
+/data/mddarr/CorwinSoftware/AvroTweets/avro-schema/target/generated-sources/org/mddarr/orders/event/dto/Order.java
+/data/mddarr/CorwinSoftware/AvroTweets/avro-schema/target/generated-sources/org/mddarr/orders/event/dto/Event1.java
+/data/mddarr/CorwinSoftware/AvroTweets/avro-schema/target/generated-sources/org/mddarr/products/PurchaseCount.java
+/data/mddarr/CorwinSoftware/AvroTweets/avro-schema/target/generated-sources/org/mddarr/orders/event/dto/OrderState.java

@@ -11,7 +11,7 @@ insert_date = ("""INSERT INTO date_table (date) VALUES (%s);""")
 
 conn = get_postgres_connection('snowpackDB' ) #, 'snowpack')
 cur = conn.cursor()
-create_table_queries = [date_table_create , basin_table_create, snowpack_table_create, basin_aggregate_table_create, location_table_create]
+create_table_queries = [date_table_create , basin_table_create,location_table_create, snowpack_table_create, basin_aggregate_table_create]
 
 for query in create_table_queries:
     cur.execute(query)
@@ -43,6 +43,10 @@ for region in regions_dict.keys():
     conn.commit()
 conn.close()
 
-# start_date = date(2008, 1, 1)
-# end_date = date(2009, 1, 1)
-# scrape_snowpack_data(start_date, end_date)
+
+from pipeline.snowpack.populate_tables import scrape_snowpack_data
+from datetime import date
+
+start_date = date(2015, 1, 1)
+end_date = date(2016, 1, 1)
+scrape_snowpack_data(start_date, end_date)

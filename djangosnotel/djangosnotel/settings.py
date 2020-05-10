@@ -61,7 +61,12 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'corsheaders',
     "storages",
-    "snowpack",
+    # "reports",
+    'django_elasticsearch_dsl_drf',
+    'django_elasticsearch_dsl',
+    'blog',
+    'users'
+
 ]
 SITE_ID=1
 AUTHENTICATION_BACKENDS = (
@@ -104,6 +109,13 @@ TEMPLATES = [
         },
     },
 ]
+
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'elasticsearch:29200'
+    },
+}
 
 
 

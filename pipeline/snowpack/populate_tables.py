@@ -7,21 +7,43 @@ from datetime import timedelta, date
 import requests
 
 
+months = {
+    'January':1,
+    'February':2,
+    'March':3,
+    'April':4,
+    'May':5,
+    'June':6,
+    'July':7,
+    'August':8,
+    'September':9,
+    'October':10,
+    'November':11,
+    'December':12
+}
+
+
+def scrape_snowpack_data(startdate, enddate ):
+    dates = date_list(startdate, enddate)
+    for date_ in dates:
+        print(date_)
+        url = gen_url(date_[0], date_[1],date_[2])
+        print(date(int(date_[2]), months[date_[0]], int(date_[1])))
+        insert_snowpack_data(extract_snowpack_data(url), date(int(date_[2]), months[date_[0]], int(date_[1])))
+
+
 def validate_data(data):
     if data == '':
         data = 0
     return data
 
+
 def insert_snowpack_data(basins_dict, date_):
     conn = get_postgres_connection('snowpackDB', 'snowpack')
     cur = conn.cursor()
 
-    year = basins_dict.pop('year')
     day = basins_dict.pop('day')
-    month = basins_dict.pop('month')
     print("day " + str(day))
-    # date_ = date(year, month, day)
-
 
     locationID = 1
     for region in basins_dict.keys():
@@ -47,8 +69,7 @@ def insert_snowpack_data(basins_dict, date_):
     conn.close()
 
 
-def extract_snowpack_data(url='https://wcc.sc.egov.usda.gov/reports/UpdateReport.html?report=Washington',
-                          extract_date=datetime.datetime.today().date()):
+def extract_snowpack_data(url='https://wcc.sc.egov.usda.gov/reports/UpdateReport.html?report=Washington'):
     r = requests.get(url)
     html = r.content
     soup = BeautifulSoup(html, 'html.parser')
@@ -57,15 +78,6 @@ def extract_snowpack_data(url='https://wcc.sc.egov.usda.gov/reports/UpdateReport
                'Water Average (in)', 'Water Pct of Average']
 
     region_dictionary = {}
-
-    currentdate = datetime.datetime.now()
-    todayyear = currentdate.year
-    todaymonth = currentdate.month
-    todayday = currentdate.day
-
-    region_dictionary['year'] = todayyear
-    region_dictionary['month'] = todaymonth
-    region_dictionary['day'] = todayday
 
     for i, row in enumerate(snowpackTable.select('tr')):
         columns = row.find_all('td')
@@ -111,12 +123,9 @@ def extract_snowpack_data(url='https://wcc.sc.egov.usda.gov/reports/UpdateReport
     return region_dictionary
 
 
-
 def gen_url(month, day, year):
-    print("Month " +  str(month))
-    # print("Year " +  str(year))
-
     return  'https://wcc.sc.egov.usda.gov/reports/UpdateReport.html?textReport=Washington&textRptKey=12&textFormat=SNOTEL+Snow%2FPrecipitation+Update+Report&StateList=12&RegionList=Select+a+Region+or+Basin&SpecialList=Select+a+Special+Report&MonthList={}&DayList={}&YearList={}&FormatList=N3&OutputFormatList=HTML&textMonth={}&textDay={}&CompYearList=select+a+year'.format(month,day,year, month, day)
+
 
 def date_list(startdate, enddate):
     '''

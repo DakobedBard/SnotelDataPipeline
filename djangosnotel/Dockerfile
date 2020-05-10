@@ -20,7 +20,9 @@ ENV LIBRARY_PATH=/lib:/usr/lib
 RUN pip install --upgrade pip
 
 COPY ./requirements.txt /usr/src/app/requirements.txt
+
 RUN pip install -r requirements.txt
+run pip install Pillow
 run pip install --upgrade youtube-dl
 run pip install --upgrade ipython
 run pip install -U Celery
@@ -33,6 +35,9 @@ run pip install -U requests
 run pip install pytest
 run pip install django-cors-headers
 run pip install django-storages
+run pip install django_elasticsearch_dsl_drf
+run pip install django-rest-elasticsearch
+
 
 run pip install djangorestframework
 #COPY ./runtests.py /usr/src/app/runtests.py

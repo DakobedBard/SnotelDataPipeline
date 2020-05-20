@@ -1,0 +1,15 @@
+version: '2'
+services:
+  db:
+    image: debezium/example-postgres:${DEBEZIUM_VERSION}
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=snowpackDB
+    container_name: postgres
+
+
+volumes:
+  postgres_data:

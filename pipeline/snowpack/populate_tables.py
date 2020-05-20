@@ -39,11 +39,8 @@ def validate_data(data):
 
 
 def insert_snowpack_data(basins_dict, date_):
-    conn = get_postgres_connection('snowpackDB', 'snowpack')
+    conn = get_postgres_connection('snowpackDB')
     cur = conn.cursor()
-
-    day = basins_dict.pop('day')
-    print("day " + str(day))
 
     locationID = 1
     for region in basins_dict.keys():

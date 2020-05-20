@@ -53,45 +53,6 @@ services:
     links:
       - zookeeper
       - kafka
-#  connect:
-#    image: debezium/connect:${DEBEZIUM_VERSION}
-#    ports:
-#      - 8083:8083
-#    links:
-#      - kafka
-#      - postgres
-#      - schema-registry
-#    container_name: connect
-#    environment:
-#      - BOOTSTRAP_SERVERS=kafka:9092
-#      - GROUP_ID=1
-#      - CONFIG_STORAGE_TOPIC=my_connect_configs
-#      - OFFSET_STORAGE_TOPIC=my_connect_offsets
-#      - STATUS_STORAGE_TOPIC=my_connect_statuses
-#      - KEY_CONVERTER=io.confluent.connect.avro.AvroConverter
-#      - VALUE_CONVERTER=io.confluent.connect.avro.AvroConverter
-#      - INTERNAL_KEY_CONVERTER=org.apache.kafka.connect.json.JsonConverter
-#      - INTERNAL_VALUE_CONVERTER=org.apache.kafka.connect.json.JsonConverter
-#      - CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL=http://schema-registry:8081
-#      - CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL=http://schema-registry:8081
-#    volumes:
-#    - /${PWD}/confluentinc-kafka-connect-elasticsearch-5.4.1:/kafka/connect/confluentinc-kafka-connect-elasticsearch-5.4.1
-#
-#
-#  elasticsearch:
-#    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.5
-#    hostname: elasticsearch
-#    container_name: elasticsearch
-#    depends_on:
-#      - connect
-#    ports:
-#      - "9200:9200"
-#      - "9300:9300"
-#    environment:
-#      xpack.security.enabled: "false"
-#      XPACK_SECURITY_ENABLED: "false"
-#      xpack.monitoring.enabled: "false"
-
 
   connect:
     image: confluentinc/cp-kafka-connect:5.4.0-beta1

@@ -21,9 +21,9 @@ conn.close()
 from pipeline.snowpack.populate_tables import extract_snowpack_data
 
 regions_dict = extract_snowpack_data()
-regions_dict.pop('year')
-regions_dict.pop('day')
-regions_dict.pop('month')
+# regions_dict.pop('year')
+# regions_dict.pop('day')
+# regions_dict.pop('month')
 
 conn = get_postgres_connection('snowpackDB')
 cur = conn.cursor()

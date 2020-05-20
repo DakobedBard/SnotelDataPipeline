@@ -17,7 +17,7 @@ docker-compose up --build
 ##### Run the scraper
 run pipeline/wta/create_tables.py (from an ipython window I'm stuggling to get to this to work from command line)   
 
-##### Install Debezium connector and submit connectors to Kafka Connect instance by using the script
+          ##### Install Debezium connector and submit connectors to Kafka Connect instance by using the script
 bash scripts/install_connectors.sh.  This will take about 30 seconds because it needs to restart the connect container 
 
 ##### Verify that records have been inserted into ElasticSearch index

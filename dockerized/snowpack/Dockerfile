@@ -15,9 +15,9 @@ RUN apk update \
 # install dependencies
 RUN pip install --upgrade pip
 
+COPY ./runscript.py /usr/src/app/runscript.py
 COPY ./requirements.txt /usr/src/app/requirements.txt
-
 RUN pip install -r requirements.txt
-COPY ./pipeline /usr/src/app/
+COPY snowpack /usr/src/app/snowpack
 CMD ["/bin/bash"]
 

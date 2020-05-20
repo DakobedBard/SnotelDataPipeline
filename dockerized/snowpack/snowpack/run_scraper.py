@@ -1,6 +1,5 @@
-
 from datetime import  date
-from pipeline.snowpack.populate_tables import gen_url, insert_snowpack_data, date_list, extract_snowpack_data
+from snowpack.populate_tables import gen_url, insert_snowpack_data, date_list, extract_snowpack_data
 
 months = {
     'January':1,

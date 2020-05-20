@@ -1,6 +1,8 @@
-from .sql_queries import basin_table_create, basin_aggregate_table_create,\
+#!/usr/bin/env
+
+from snowpack.sql_queries import basin_table_create, basin_aggregate_table_create,\
     snowpack_table_create, location_table_create, basins_table_insert,location_table_insert
-from pipeline.utils.postgresConnection import get_postgres_connection
+from snowpack.postgresConnection import get_postgres_connection
 
 date_table_create = ("""CREATE TABLE IF NOT EXISTS date_table (
                             id SERIAL PRIMARY KEY,

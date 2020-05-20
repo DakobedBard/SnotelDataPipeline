@@ -140,8 +140,8 @@ def date_list(startdate, enddate):
         days.append((months[day.month-1], day.day, day.year))
     return days
 
-# from pipeline.snowpack.sql_queries import snowpack_table_insert
-# from pipeline.utils.postgresConnection import get_postgres_connection
+# from snowpack.snowpack.sql_queries import snowpack_table_insert
+# from snowpack.utils.postgresConnection import get_postgres_connection
 # import os
 # from bs4 import BeautifulSoup
 # import datetime

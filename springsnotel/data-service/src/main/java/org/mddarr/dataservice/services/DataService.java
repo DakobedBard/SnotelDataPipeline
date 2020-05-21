@@ -1,12 +1,14 @@
 package org.mddarr.dataservice.services;
 
 import org.mddarr.dataservice.dao.LocationRepository;
+import org.mddarr.dataservice.entity.LocationDataEntity;
 import org.mddarr.dataservice.entity.LocationEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DataService {
@@ -22,6 +24,12 @@ public class DataService {
         System.out.println("The first location is " +  l.getLocation_name());
         return locations;
     }
+
+
+
+//    public Optional<LocationDataEntity> getLocation(Integer id){
+//        return locationRepository.findById(id);
+//    }
 
 
 

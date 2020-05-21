@@ -1,17 +1,30 @@
+
+
 <template>
   <div class="moutain">
     <h1>{{ name }}</h1>
+     <a @click="getLocations('bro')">Click me!</a>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'MountainComponent',
   props: {
     name: String
   },
-}
+  methods: {
+        getLocations: function (text){
+            console.log("You suck! " + text + " " + this.name )  
+            axios.get('http://localhost:8081/data/location/')
+        }
+    }
+  }
 </script>
+
+
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

@@ -5,10 +5,13 @@ services:
     build: .
     container_name: scraper
     depends_on:
-      - db
-
-
-  db:
+      - postgres
+    networks:
+      - scrapenetwork
+    command: python3 runscript.py
+    environment:
+      - DATABASE_URL=postgres://postgres:password@db:5432/snowpackDB
+  postgres:
     image: postgres:12.0-alpine
     ports:
       - 5432:5432
@@ -17,7 +20,10 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=snowpackDB
     container_name: postgres
+    networks:
+      - scrapenetwork
 
 
-volumes:
-  postgres_data:
+
+networks:
+  scrapenetwork:

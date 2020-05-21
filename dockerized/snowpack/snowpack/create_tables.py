@@ -20,7 +20,7 @@ for query in create_table_queries:
 conn.commit()
 conn.close()
 
-from pipeline.snowpack.populate_tables import extract_snowpack_data
+from snowpack.populate_tables import extract_snowpack_data
 
 regions_dict = extract_snowpack_data()
 # regions_dict.pop('year')
@@ -46,7 +46,7 @@ for region in regions_dict.keys():
 conn.close()
 
 
-from pipeline.snowpack.populate_tables import scrape_snowpack_data
+from snowpack.populate_tables import scrape_snowpack_data
 from datetime import date
 
 start_date = date(2015, 1, 1)

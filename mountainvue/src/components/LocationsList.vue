@@ -2,8 +2,25 @@
 
 <template>
   <div class="locations">
-    
-    <v-simple-table dark>
+      <v-card dark>
+        <v-card-title dark>
+          Stream Flow Location
+          <v-spacer></v-spacer>
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Search"
+            single-line
+            hide-details
+          ></v-text-field>
+       
+    </v-card-title>
+     </v-card>
+    <v-data-table dark 
+      :headers="headers"
+      :items="locations"
+      :search="search"
+    >
     
     <template v-slot:default>
     <thead style="height:1000px">
@@ -21,7 +38,7 @@
         </tr>
       </tbody>
     </template>
-    </v-simple-table>
+    </v-data-table>
   </div>
 
 </template>
@@ -45,14 +62,17 @@ export default {
     console.log("Locations " + location_array.length)
     
     return {
-            search: '',
-            headers: [
+        search: '',
+        headers: [
           {
-            text: 'Dessert (100g serving)',
             align: 'start',
             sortable: false,
             value: 'name',
-          }],
+          },
+          { text: 'Name', value: 'location_name' },
+          { text: 'Elevation', value: 'elevation' },
+
+        ],
           desserts: [
             {
               name: 'Frozen Yogurt',
